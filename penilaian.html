@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Learning SMPN 3 Purwokerto - Penilaian</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/penilaian.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-left">
+          <h1>E-Learning SMPN 3 Purwokerto</h1>
+          <p>Portal Guru</p>
+        </div>
+        <div class="header-right">
+          <div class="greeting">
+            <p>Selamat Datang,</p>
+            <p>Bu Sari Indah, S.Pd</p>
+          </div>
+          <div class="avatar">SI</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="home_guru.html" class="nav-btn">Dashboard</a>
+        <a href="upload_tugas.html" class="nav-btn">Upload Tugas</a>
+        <a href="upload_materi.html" class="nav-btn">Upload Materi</a>
+        <a href="monitor_siswa.html" class="nav-btn">Monitor Siswa</a>
+        <a href="penilaian.html" class="nav-btn active">Penilaian</a>
+      </div>
+
+      <div id="contentArea">
+        <div class="penilaian-header">
+          <h2 class="monitor-title">Penilaian Tugas - Kelas 7A</h2>
+          <p class="monitor-subtitle">Bahasa Inggris</p>
+        </div>
+
+        <div id="mainPenilaianContent"></div>
+      </div>
+    </div>
+
+    <script>
+      // Data Tugas (Wajib disalin dari file sebelumnya)
+      const tugasData = [
+        {
+          id: 1,
+          nama: "Sugeng Riyadi",
+          judul: "PR Daily Activity",
+          kelas: "7A",
+          nis: "123456789",
+          totalTugas: 5,
+          status: "Belum Dinilai",
+          deadline: "2 Jun 2025, 10:05 WIB",
+          soal: [
+            {
+              no: 1,
+              tipe: 10,
+              soal: "I always ... my teeth after breakfast before I go to school",
+              pilihan: ["a. wash", "b. brush", "c. see", "d. take"],
+              jawaban: "b",
+              benar: true,
+            },
+            {
+              no: 2,
+              tipe: 10,
+              soal: "My school is far, so my father ... me to school every morning",
+              pilihan: ["a. drives", "b. plays", "c. walks", "d. sleeps"],
+              jawaban: "c",
+              benar: false,
+            },
+            {
+              no: 3,
+              tipe: 10,
+              soal: "What time do you usually dinner with your family?",
+              pilihan: ["a. has", "b. had", "c. have", "d. having"],
+              jawaban: "c",
+              benar: true,
+            },
+          ],
+        },
+        {
+          id: 2,
+          nama: "Ahmad Budi Santoso",
+          judul: "PR Daily Activity",
+          kelas: "7A",
+          status: "Belum Dinilai",
+          deadline: "2 Jun 2025, 10:30 WIB",
+        },
+        {
+          id: 3,
+          nama: "Citra Lestari",
+          judul: "PR Daily Activity",
+          kelas: "7A",
+          status: "Belum Dinilai",
+          deadline: "3 Jun 2025, 10:08 WIB",
+        },
+        {
+          id: 4,
+          nama: "Dewi Anggraini",
+          judul: "PR Daily Activity",
+          kelas: "7A",
+          status: "Belum Dinilai",
+          deadline: "4 Jun 2025, 11:00 WIB",
+        },
+        {
+          id: 5,
+          nama: "Farel Nugraha",
+          judul: "PR Daily Activity",
+          kelas: "7A",
+          status: "Belum Dinilai",
+          deadline: "4 Jun 2025, 14:05 WIB",
+        },
+        {
+          id: 6,
+          nama: "Zahra Mutiara",
+          judul: "PR Daily Activity",
+          kelas: "7A",
+          status: "Belum Dinilai",
+          deadline: "2 Jun 2025, 13:00 WIB",
+        },
+        {
+          id: 7,
+          nama: "Andi Pratama",
+          judul: "PR Daily Activity",
+          kelas: "7A",
+          status: "Sudah Dinilai",
+          deadline: "1 Jun 2025, 09:00 WIB",
+          nilai: 85,
+        },
+        {
+          id: 8,
+          nama: "Bella Safira",
+          judul: "PR Daily Activity",
+          kelas: "7A",
+          status: "Sudah Dinilai",
+          deadline: "1 Jun 2025, 10:15 WIB",
+          nilai: 90,
+        },
+        {
+          id: 9,
+          nama: "Cahya Ramadhan",
+          judul: "PR Daily Activity",
+          kelas: "7A",
+          status: "Sudah Dinilai",
+          deadline: "1 Jun 2025, 11:30 WIB",
+          nilai: 78,
+        },
+        {
+          id: 10,
+          nama: "Dina Sari",
+          judul: "PR Daily Activity",
+          kelas: "7A",
+          status: "Sudah Dinilai",
+          deadline: "1 Jun 2025, 14:00 WIB",
+          nilai: 92,
+        },
+      ];
+
+      // State management
+      let currentTab = "belum-dinilai";
+      let viewMode = "list"; // 'list' atau 'detail'
+
+      // --- FUNGSI NAVIGASI DALAM HALAMAN ---
+
+      window.showDetailNilai = function (tugasId) {
+        const selectedTugas = tugasData.find((t) => t.id === tugasId);
+        if (!selectedTugas) return;
+
+        viewMode = "detail";
+        renderDetailNilai(selectedTugas);
+      };
+
+      window.backToPenilaianList = function () {
+        viewMode = "list";
+        renderPenilaianList();
+      };
+
+      // --- FUNGSI RENDER DETAIL NILAI ---
+
+      function renderDetailNilai(selectedTugas) {
+        const content = document.getElementById("mainPenilaianContent");
+
+        content.innerHTML = `
+                <div class="penilaian-container">
+                    <div class="detail-tugas-card">
+                        <div class="detail-header">
+                            <h3>Penilaian Tugas : ${selectedTugas.judul} - ${
+          selectedTugas.nama
+        }</h3>
+                            <p class="detail-subtitle">Kelola dan berikan penilaian untuk tugas siswa</p>
+                            <div class="detail-badges">
+                                <span class="badge badge-otomatis">Hasil Otomatis</span>
+                                <span class="badge badge-benar">8 dari 10 Soal Benar</span>
+                            </div>
+                        </div>
+
+                        <div class="soal-section">
+                            <div class="soal-header">Nilai Akhir:</div>
+                            <div style="font-size: 24px; font-weight: 700; color: #1a1a1a; margin-bottom: 20px;">${
+                              selectedTugas.nilai || 80
+                            }</div>
+                        </div>
+
+                        ${(selectedTugas.soal || [])
+                          .map(
+                            (soal) => `
+                            <div class="soal-section">
+                                <div class="soal-header">Soal ${soal.no} dari ${
+                              soal.tipe
+                            }</div>
+                                <div class="soal-text">${soal.soal}</div>
+                                <div class="pilihan-list">
+                                    ${soal.pilihan
+                                      .map((p) => {
+                                        const isCorrectAnswer = p.startsWith(
+                                          soal.jawaban
+                                        );
+                                        const isCorrect =
+                                          isCorrectAnswer && soal.benar;
+                                        const isWrong =
+                                          isCorrectAnswer && !soal.benar;
+                                        return `
+                                            <div class="pilihan-item ${
+                                              isCorrect
+                                                ? "correct"
+                                                : isWrong
+                                                ? "wrong"
+                                                : ""
+                                            }">
+                                                ${p} ${
+                                          isCorrect
+                                            ? "✓ Jawaban Benar"
+                                            : isWrong
+                                            ? "✗ Jawaban Siswa"
+                                            : ""
+                                        }
+                                            </div>
+                                        `;
+                                      })
+                                      .join("")}
+                                </div>
+                            </div>
+                        `
+                          )
+                          .join("")}
+                    </div>
+
+                    <div>
+                        <div class="sidebar-info">
+                            <div class="info-section">
+                                <h4>Informasi Siswa</h4>
+                                <div class="info-row">
+                                    <span class="info-label">Nama</span>
+                                    <span class="info-value">: ${
+                                      selectedTugas.nama
+                                    }</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Kelas</span>
+                                    <span class="info-value">: ${
+                                      selectedTugas.kelas
+                                    }</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">NIS</span>
+                                    <span class="info-value">: ${
+                                      selectedTugas.nis
+                                    }</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Total Tugas</span>
+                                    <span class="info-value">: ${
+                                      selectedTugas.totalTugas || "-"
+                                    }</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Status</span>
+                                    <span class="info-value">: Aktif</span>
+                                </div>
+                            </div>
+
+                            <div class="comment-box">
+                                <label>Komentar Guru / Catatan Penilaian</label>
+                                <textarea placeholder="Sudah cukup baik. Namun perlu ditingkatkan pembendaharaan kosakata"></textarea>
+                            </div>
+
+                            <div class="action-buttons">
+                                <button class="btn-kirim">Edit Komentar</button>
+                                <button class="btn-kembali" onclick="window.backToPenilaianList()">Kembali</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+      }
+
+      // --- FUNGSI RENDER LIST TUGAS (Termasuk tab) ---
+
+      function renderPenilaianList() {
+        const content = document.getElementById("mainPenilaianContent");
+
+        // Konten untuk Tab dan List Tugas
+        content.innerHTML = `
+                <div class="card" style="margin-bottom: 20px;">
+                    <div class="tab-buttons">
+                        <button class="tab-btn" data-tab="semua">Semua Tugas</button>
+                        <button class="tab-btn" data-tab="belum-dinilai">Belum Dinilai</button>
+                        <button class="tab-btn" data-tab="sudah-dinilai">Sudah Dinilai</button>
+                    </div>
+                </div>
+                <div id="tugasListContainer">
+                    </div>
+            `;
+
+        const tabBtns = content.querySelectorAll(".tab-btn");
+        tabBtns.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            currentTab = this.getAttribute("data-tab");
+            renderTugasListContent();
+          });
+        });
+
+        renderTugasListContent();
+      }
+
+      function renderTugasListContent() {
+        const listContainer = document.getElementById("tugasListContainer");
+        const tabBtns = document.querySelectorAll(".tab-btn");
+
+        tabBtns.forEach((btn) => {
+          btn.classList.remove("active");
+          if (btn.getAttribute("data-tab") === currentTab) {
+            btn.classList.add("active");
+          }
+        });
+
+        if (currentTab === "belum-dinilai") {
+          const belumDinilai = tugasData.filter(
+            (t) => t.status === "Belum Dinilai"
+          );
+          listContainer.innerHTML = `<div class="tugas-list">${belumDinilai
+            .map(
+              (tugas) => `
+                    <div class="tugas-card">
+                        <div class="tugas-card-info">
+                            <h3>${tugas.nama}</h3>
+                            <p>Tugas: ${tugas.judul} - Kelas ${tugas.kelas}</p>
+                            <p>Batas: ${tugas.deadline}</p>
+                            <p style="color: #d97706; font-weight: 500;">Status: ${tugas.status}</p>
+                        </div>
+                        <div class="tugas-card-status">
+                            <span class="status-tag status-belum">SUDAH DIKERJAKAN/PENILAIAN</span>
+                            <button class="btn-nilai-tugas" onclick="window.showDetailNilai(${tugas.id})">Beri nilai</button>
+                        </div>
+                    </div>`
+            )
+            .join("")}</div>`;
+        } else if (currentTab === "sudah-dinilai") {
+          const sudahDinilai = tugasData.filter(
+            (t) => t.status === "Sudah Dinilai"
+          );
+          listContainer.innerHTML = `<div class="tugas-list">${sudahDinilai
+            .map(
+              (tugas) => `
+                    <div class="tugas-card">
+                        <div class="tugas-card-info">
+                            <h3>${tugas.nama}</h3>
+                            <p>Tugas: ${tugas.judul} - Kelas ${tugas.kelas}</p>
+                            <p>Dikumpulkan: ${tugas.deadline}</p>
+                            <p style="color: #059669; font-weight: 500;">Nilai: ${tugas.nilai}</p>
+                        </div>
+                        <div class="tugas-card-status">
+                            <span class="status-tag status-sudah">SUDAH DINILAI</span>
+                            <button class="btn-nilai-tugas" onclick="window.showDetailNilai(${tugas.id})">Lihat Detail</button>
+                        </div>
+                    </div>`
+            )
+            .join("")}</div>`;
+        } else if (currentTab === "semua") {
+          listContainer.innerHTML = `
+                    <div style="display: grid; grid-template-columns: 1fr 350px; gap: 20px;">
+                        <div>
+                            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 15px;">Penilaian Tugas</h3>
+                            <p style="font-size: 13px; color: #888; margin-bottom: 20px;">Kelola dan berikan penilaian untuk tugas siswa</p>
+                            
+                            <div class="tugas-list">
+                                <div class="tugas-card">
+                                    <div class="tugas-card-info"><h3>PR Daily Activity - Kelas 7A</h3><p>Total Siswa: 28 | Belum Dinilai: 6 | Sudah Dinilai: 4</p></div>
+                                    <div class="tugas-card-status"><span class="status-tag status-belum">Menunggu Nilai</span><button class="btn-nilai-tugas" onclick="window.showKelasDetail('7a')">Mulai Menilai</button></div>
+                                </div>
+                                <div class="tugas-card">
+                                    <div class="tugas-card-info"><h3>PR Daily Activity - Kelas 7B</h3><p>Total Siswa: 30 | Belum Dinilai: 30 | Sudah Dinilai: 0</p></div>
+                                    <div class="tugas-card-status"><span class="status-tag status-belum">Belum Dinilai</span><button class="btn-nilai-tugas">Mulai Menilai</button></div>
+                                </div>
+                                <div class="tugas-card">
+                                    <div class="tugas-card-info"><h3>PR Daily Activity - Kelas 7C</h3><p>Total Siswa: 31 | Belum Dinilai: 31 | Sudah Dinilai: 0</p></div>
+                                    <div class="tugas-card-status"><span class="status-tag status-belum">Belum Dinilai</span><button class="btn-nilai-tugas">Lihat Hasil</button></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="statistik-card"><h3>Statistik Penilaian</h3><div class="stat-row"><span class="info-label">Total Tugas Aktif</span><span class="info-value">5</span></div><div class="stat-row"><span class="info-label">Belum Dinilai</span><span class="info-value">93</span></div><div class="stat-row"><span class="info-label">Rata-rata Kelas</span><span class="info-value">8.9</span></div></div>
+                            <div class="deadline-card"><h3>Pengingat Deadline</h3><div class="deadline-item">📌 Pr Kelas 7A Daily Activities berakhir dalam 3 hari</div><div class="deadline-item">📌 Pr Kelas 7B Daily Activities berakhir dalam 5 hari</div></div>
+                        </div>
+                    </div>
+                `;
+        }
+      }
+
+      window.showKelasDetail = function () {
+        // Fungsi ini hanya contoh untuk pindah tampilan ke List Tugas Belum Dinilai
+        currentTab = "belum-dinilai";
+        renderTugasListContent();
+      };
+
+      // FUNGSI INISIALISASI
+      function initPenilaian() {
+        // Periksa apakah pengguna baru saja kembali dari detail atau memulai
+        if (viewMode === "list") {
+          renderPenilaianList();
+        } else {
+          // Ini seharusnya tidak terjadi jika kita selalu kembali ke list
+          renderPenilaianList();
+        }
+      }
+
+      window.addEventListener("load", initPenilaian);
+    </script>
+  </body>
+</html>

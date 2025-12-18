@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Learning SMPN 3 Purwokerto - Upload Materi</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/upload_materi.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-left">
+          <h1>E-Learning SMPN 3 Purwokerto</h1>
+          <p>Portal Guru</p>
+        </div>
+        <div class="header-right">
+          <div class="greeting">
+            <p>Selamat Datang,</p>
+            <p>Bu Sari Indah, S.Pd</p>
+          </div>
+          <div class="avatar">SI</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="home_guru.html" class="nav-btn">Dashboard</a>
+        <a href="upload_tugas.html" class="nav-btn">Upload Tugas</a>
+        <a href="upload_materi.html" class="nav-btn active">Upload Materi</a>
+        <a href="monitor_siswa.html" class="nav-btn">Monitor Siswa</a>
+        <a href="penilaian.html" class="nav-btn">Penilaian</a>
+      </div>
+
+      <div id="contentArea">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">📚</div>
+            <div class="card-title">
+              <h3>Upload Materi Pembelajaran</h3>
+              <p>Upload materi presentasi atau untuk share lewat drive</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Judul Materi</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Masukkan judul materi"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Mata Pelajaran</label>
+              <select class="form-select">
+                <option value="">Pilih mata pelajaran</option>
+                <option value="bahasa-inggris">Bahasa Inggris</option>
+                <option value="matematika">Matematika</option>
+                <option value="ipa">IPA</option>
+                <option value="ips">IPS</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Kelas</label>
+              <select class="form-select">
+                <option value="">Pilih kelas</option>
+                <option value="7a">Kelas 7A</option>
+                <option value="7b">Kelas 7B</option>
+                <option value="7c">Kelas 7C</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Kategori Materi</label>
+            <select class="form-select">
+              <option value="">Pilih kategori</option>
+              <option value="teori">Teori</option>
+              <option value="praktik">Praktik</option>
+              <option value="video">Video</option>
+              <option value="presentasi">Presentasi</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Deskripsi Materi</label>
+            <textarea
+              class="form-textarea"
+              rows="3"
+              placeholder="Tuliskan deskripsi singkat tentang materi yang akan diunggah..."
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Upload File Materi</label>
+            <div class="upload-area" id="uploadAreaMateri">
+              <div class="upload-icon">📄</div>
+              <p class="upload-text">Klik untuk upload file atau drag & drop</p>
+              <p class="upload-subtext"></p>
+              <input
+                type="file"
+                id="fileInputMateri"
+                style="display: none"
+                accept=".pdf,.doc,.docx,.ppt,.pptx,.mp4,.avi"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Tanggal Publikasi</label>
+              <input type="date" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-select">
+                <option value="aktif">Aktif</option>
+                <option value="draft">Draft</option>
+                <option value="arsip">Arsip</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn-secondary">Batal</button>
+            <button class="btn-secondary">Simpan sebagai Draft</button>
+            <button class="btn-primary">Upload Materi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleFileSelect(file, uploadArea) {
+        uploadArea.innerHTML = `
+                <div class="upload-icon">✅</div>
+                <p class="upload-text">${file.name}</p>
+                <p class="upload-subtext">File berhasil dipilih</p>
+            `;
+      }
+
+      function setupUploadAreaMateri() {
+        const uploadArea = document.getElementById("uploadAreaMateri");
+        const fileInput = document.getElementById("fileInputMateri");
+
+        if (!uploadArea || !fileInput) return;
+
+        uploadArea.addEventListener("click", () => fileInput.click());
+
+        uploadArea.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          uploadArea.style.borderColor = "#4dd4d8";
+          uploadArea.style.background = "#f0feff";
+        });
+
+        uploadArea.addEventListener("dragleave", () => {
+          uploadArea.style.borderColor = "#ddd";
+          uploadArea.style.background = "#fafafa";
+        });
+
+        uploadArea.addEventListener("drop", (e) => {
+          e.preventDefault();
+          uploadArea.style.borderColor = "#ddd";
+          uploadArea.style.background = "#fafafa";
+
+          const files = e.dataTransfer.files;
+          if (files.length > 0) {
+            handleFileSelect(files[0], uploadArea);
+          }
+        });
+
+        fileInput.addEventListener("change", (e) => {
+          if (e.target.files.length > 0) {
+            handleFileSelect(e.target.files[0], uploadArea);
+          }
+        });
+      }
+      window.addEventListener("load", setupUploadAreaMateri);
+    </script>
+  </body>
+</html>

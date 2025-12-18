@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning SMPN 3 Purwokerto - Monitor Siswa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/monitor_siswa.css"> 
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <h1>E-Learning SMPN 3 Purwokerto</h1>
+                <p>Portal Guru</p>
+            </div>
+            <div class="header-right">
+                <div class="greeting">
+                    <p>Selamat Datang,</p>
+                    <p>Bu Sari Indah, S.Pd</p>
+                </div>
+                <div class="avatar">SI</div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <a href="home_guru.html" class="nav-btn">Dashboard</a>
+            <a href="upload_tugas.html" class="nav-btn">Upload Tugas</a>
+            <a href="upload_materi.html" class="nav-btn">Upload Materi</a>
+            <a href="monitor_siswa.html" class="nav-btn active">Monitor Siswa</a>
+            <a href="penilaian.html" class="nav-btn">Penilaian</a>
+        </div>
+
+        <div id="contentArea">
+            <div class="monitor-header">
+                <div>
+                    <h2 class="monitor-title">Monitor Aktivitas Siswa</h2>
+                    <p class="monitor-subtitle">Pantau Aktivitas dan Progres Belajar Siswa Secara Real-time</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <label class="filter-label">Kelas</label>
+                        <select class="filter-select" id="kelasFilter">
+                            <option value="7a">Kelas 7A</option>
+                            <option value="7b" selected>Kelas 7B</option>
+                            <option value="7c">Kelas 7C</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Status</label>
+                        <select class="filter-select" id="statusFilter">
+                            <option value="all">Semua Status</option>
+                            <option value="online">Online</option>
+                            <option value="offline">Offline</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">Pencarian</label>
+                        <div class="search-box">
+                            <input type="text" class="search-input" placeholder="Cari Nama Siswa" id="searchInput">
+                            <button class="search-btn">🔍</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <div class="stat-card-icon" style="background: #4dd4d8;">👥</div>
+                    <div class="stat-card-content">
+                        <div class="stat-card-value" id="siswaOnline">12</div>
+                        <div class="stat-card-label">Siswa online</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon" style="background: #5eb3f6;">📊</div>
+                    <div class="stat-card-content">
+                        <div class="stat-card-value" id="totalSiswa">28</div>
+                        <div class="stat-card-label">Total siswa</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon" style="background: #f8a534;">📝</div>
+                    <div class="stat-card-content">
+                        <div class="stat-card-value" id="tugasAktif">5</div>
+                        <div class="stat-card-label">Tugas Aktif</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon" style="background: #ffd93d;">⏰</div>
+                    <div class="stat-card-content">
+                        <div class="stat-card-value" id="menungguReview">8</div>
+                        <div class="stat-card-label">Menunggu review</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="table-header">
+                    <h3 class="table-title">Daftar siswa 7B</h3>
+                    <button class="refresh-btn" id="refreshBtn">🔄 Refresh</button>
+                </div>
+                
+                <div class="student-table">
+                    <div class="table-head">
+                        <div class="th" style="width: 25%;">Siswa</div>
+                        <div class="th" style="width: 12%;">Status</div>
+                        <div class="th" style="width: 18%;">Terakhir Online</div>
+                        <div class="th" style="width: 18%;">Progres Materi</div>
+                        <div class="th" style="width: 12%;">Tugas Selesai</div>
+                        <div class="th" style="width: 15%;">Aksi</div>
+                    </div>
+                    <div class="table-body" id="studentTableBody">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data dan Fungsi Monitor Siswa (Diulang di sini)
+        const studentData = { /* ... (salin data studentData dari file asli) ... */ }; 
+
+        function renderStudentTable(kelas, searchTerm = '') {
+            const students = studentData[kelas] || [];
+            const statusFilter = document.getElementById('statusFilter').value;
+            const tbody = document.getElementById('studentTableBody');
+            
+            // ... (Kode filter dan render tabel siswa) ...
+            
+            let filteredStudents = students;
+            
+            if (searchTerm) {
+                filteredStudents = filteredStudents.filter(s => 
+                    s.name.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            if (statusFilter !== 'all') {
+                filteredStudents = filteredStudents.filter(s => s.status === statusFilter);
+            }
+
+            const onlineCount = students.filter(s => s.status === 'online').length;
+            document.getElementById('siswaOnline').textContent = onlineCount;
+            document.getElementById('totalSiswa').textContent = students.length;
+
+            tbody.innerHTML = filteredStudents.map(student => `
+                <div class="student-row">
+                    <div class="td" style="width: 25%;">
+                        <div class="student-info">
+                            <div class="student-avatar" style="background: ${student.color};">
+                                ${student.avatar}
+                            </div>
+                            <div>
+                                <div class="student-name">${student.name}</div>
+                                <div class="student-id">${student.id}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="td" style="width: 12%;">
+                        <span class="status-badge status-${student.status}">
+                            ${student.status === 'online' ? 'Online' : 'Offline'}
+                        </span>
+                    </div>
+                    <div class="td" style="width: 18%;">
+                        <span class="online-time">${student.lastOnline}</span>
+                    </div>
+                    <div class="td" style="width: 18%;">
+                        <div class="progress-container">
+                            <div class="progress-mini">
+                                <div class="progress-mini-fill" style="width: ${student.progress}%"></div>
+                            </div>
+                            <span class="progress-label">${student.progress}%</span>
+                        </div>
+                    </div>
+                    <div class="td" style="width: 12%;">
+                        <span class="tugas-count">${student.tugas}</span>
+                    </div>
+                    <div class="td" style="width: 15%;">
+                        <div class="action-btns">
+                            <button class="action-btn btn-detail">Detail</button>
+                            <button class="action-btn btn-nilai">Nilai</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function initMonitorSiswa() {
+            renderStudentTable('7b');
+            
+            document.getElementById('kelasFilter').addEventListener('change', (e) => {
+                renderStudentTable(e.target.value);
+            });
+            
+            document.getElementById('refreshBtn').addEventListener('click', () => {
+                const kelas = document.getElementById('kelasFilter').value;
+                renderStudentTable(kelas);
+            });
+
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                const kelas = document.getElementById('kelasFilter').value;
+                const searchTerm = e.target.value.toLowerCase();
+                renderStudentTable(kelas, searchTerm);
+            });
+
+            document.getElementById('statusFilter').addEventListener('change', () => {
+                const kelas = document.getElementById('kelasFilter').value;
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                renderStudentTable(kelas, searchTerm);
+            });
+        }
+        window.addEventListener('load', initMonitorSiswa);
+    </script>
+</body>
+</html>

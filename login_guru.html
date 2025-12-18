@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - SMPN 3 Purwokerto</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/login_guru.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="login-container">
+      <!-- Logo Section -->
+      <div class="logo-section">
+        <div class="logo"></div>
+      </div>
+
+      <!-- Welcome Text -->
+      <h1 class="welcome-text">Selamat Datang</h1>
+      <p class="subtitle">Halaman Login Guru SMPN 3 Purwokerto</p>
+
+      <!-- Login Form -->
+      <form id="loginForm">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-input"
+            placeholder="Masukkan Username"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <div class="password-group">
+            <input
+              type="password"
+              class="form-input"
+              id="password"
+              placeholder="Masukkan Password"
+              required
+            />
+            <span class="toggle-password" onclick="togglePassword()">
+              <i id="toggleIcon" class="fa-solid fa-eye"></i>
+            </span>
+          </div>
+          <div class="forgot-password">
+            <a href="reset.html">Lupa Password?</a>
+          </div>
+        </div>
+
+        <div class="remember-section">
+          <input type="checkbox" id="remember" />
+          <label for="remember">Ingatkan saya</label>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+
+      <div class="step active"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/login_guru.js"></script>
+  </body>
+</html>

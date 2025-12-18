@@ -1,0 +1,518 @@
+/* --- GLOBAL STYLES (Sama seperti dashboard.css) --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #d4f1f4 0%, #e8f5f7 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  background: white;
+  border-radius: 20px;
+  padding: 30px 40px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left h1 {
+  font-size: 24px;
+  color: #1a1a1a;
+  margin-bottom: 5px;
+}
+
+.header-left p {
+  color: #888;
+  font-size: 14px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-right .greeting {
+  text-align: right;
+}
+
+.header-right .greeting p:first-child {
+  font-size: 14px;
+  color: #666;
+}
+
+.header-right .greeting p:last-child {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #4dd4d8 0%, #3bb5b9 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.nav-buttons {
+  background: white;
+  border-radius: 20px;
+  padding: 20px 40px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  color: #555;
+  background: #d4d4d4;
+}
+
+.nav-btn.active {
+  background: linear-gradient(135deg, #4dd4d8 0%, #3bb5b9 100%);
+  color: white;
+}
+
+.nav-btn:not(.active) {
+  background: #d4d4d4;
+  color: #555;
+}
+
+.nav-btn:hover:not(.active) {
+  background: #c4c4c4;
+}
+
+/* Ensure nav buttons don't get transient transform/animation on click or focus */
+.nav-btn {
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-btn:active,
+.nav-btn:focus {
+  transform: none !important;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Card (needed for tab container) */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+}
+
+/* Penilaian Header */
+.penilaian-header {
+  margin-bottom: 25px;
+}
+
+.monitor-title {
+  /* Reused style for h2 */
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 5px;
+}
+
+.monitor-subtitle {
+  /* Reused style for p */
+  font-size: 14px;
+  color: #888;
+}
+
+/* Tab Styles */
+.tab-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.tab-btn {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #d4d4d4;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #4dd4d8 0%, #3bb5b9 100%);
+  color: white;
+}
+
+.tab-btn:hover:not(.active) {
+  background: #c4c4c4;
+}
+
+/* Tugas List Styles */
+.tugas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tugas-card {
+  background: white;
+  border: 2px solid #e5e5e5;
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.tugas-card:hover {
+  border-color: #4dd4d8;
+  box-shadow: 0 4px 12px rgba(77, 212, 216, 0.15);
+}
+
+.tugas-card-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.tugas-card-info p {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+.tugas-card-status {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.status-tag {
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.status-belum {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status-sudah {
+  background: #d4f4dd;
+  color: #059669;
+}
+
+.btn-nilai-tugas {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #4dd4d8 0%, #3bb5b9 100%);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-nilai-tugas:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(77, 212, 216, 0.4);
+}
+
+/* Detail Penilaian Layout */
+.penilaian-container {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 20px;
+}
+
+.detail-tugas-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.detail-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.detail-subtitle {
+  font-size: 13px;
+  color: #888;
+}
+
+.detail-badges {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.badge {
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badge-otomatis {
+  background: #d4f4dd;
+  color: #059669;
+}
+
+.badge-benar {
+  background: #fee;
+  color: #dc2626;
+}
+
+.soal-section {
+  margin-bottom: 25px;
+}
+
+.soal-header {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.soal-text {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.pilihan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.pilihan-item {
+  padding: 10px 15px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pilihan-item.correct {
+  background: #d4f4dd;
+  color: #059669;
+  font-weight: 500;
+}
+
+.pilihan-item.wrong {
+  background: #fee;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.sidebar-info {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-section {
+  margin-bottom: 20px;
+}
+
+.info-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 13px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: #888;
+}
+
+.info-value {
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.comment-box {
+  margin-top: 15px;
+}
+
+.comment-box label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.comment-box textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-kirim {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #4dd4d8 0%, #3bb5b9 100%);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-kembali {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #fee;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.statistik-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.statistik-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.deadline-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.deadline-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.deadline-item {
+  padding: 10px 0;
+  font-size: 13px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .penilaian-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .header-right {
+    flex-direction: column;
+  }
+}

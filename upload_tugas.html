@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Learning SMPN 3 Purwokerto - Upload Tugas</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/upload_tugas.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-left">
+          <h1>E-Learning SMPN 3 Purwokerto</h1>
+          <p>Portal Guru</p>
+        </div>
+        <div class="header-right">
+          <div class="greeting">
+            <p>Selamat Datang,</p>
+            <p>Bu Sari Indah, S.Pd</p>
+          </div>
+          <div class="avatar">SI</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="home_guru.html" class="nav-btn">Dashboard</a>
+        <a href="upload_tugas.html" class="nav-btn active">Upload Tugas</a>
+        <a href="upload_materi.html" class="nav-btn">Upload Materi</a>
+        <a href="monitor_siswa.html" class="nav-btn">Monitor Siswa</a>
+        <a href="penilaian.html" class="nav-btn">Penilaian</a>
+      </div>
+
+      <div id="contentArea">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">📝</div>
+            <div class="card-title">
+              <h3>Buat Tugas Baru</h3>
+              <p>Isi form di bawah untuk membuat tugas</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Judul Tugas</label>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Masukkan Judul Tugas"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Mata Pelajaran</label>
+              <select class="form-select">
+                <option value="">Pilih Mata Pelajaran</option>
+                <option value="bahasa-inggris">Bahasa Inggris</option>
+                <option value="matematika">Matematika</option>
+                <option value="ipa">IPA</option>
+                <option value="ips">IPS</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Kelas</label>
+              <select class="form-select">
+                <option value="">Pilih Kelas</option>
+                <option value="7a">Kelas 7A</option>
+                <option value="7b">Kelas 7B</option>
+                <option value="7c">Kelas 7C</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Deskripsi Tugas</label>
+            <textarea
+              class="form-textarea"
+              rows="4"
+              placeholder="Tuliskan Deskripsi Singkat Tentang Tugas Yang Akan Diunggah"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">File Tugas</label>
+            <div class="upload-area" id="uploadArea">
+              <div class="upload-icon">📄</div>
+              <p class="upload-text">Klik atau seret file ke sini</p>
+              <p class="upload-subtext">
+                Upload .pdf, format tugas atau format pendukung
+              </p>
+              <input
+                type="file"
+                id="fileInput"
+                style="display: none"
+                accept=".pdf,.doc,.docx,.ppt,.pptx"
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Tanggal Mulai</label>
+              <input type="date" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tanggal Deadline</label>
+              <input type="date" class="form-input" />
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn-secondary">Batal</button>
+            <button class="btn-primary">Publish Tugas</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi Form dan Upload
+      function handleFileSelect(file, uploadArea) {
+        uploadArea.innerHTML = `
+                <div class="upload-icon">✅</div>
+                <p class="upload-text">${file.name}</p>
+                <p class="upload-subtext">File berhasil dipilih</p>
+            `;
+      }
+
+      function setupUploadArea() {
+        const uploadArea = document.getElementById("uploadArea");
+        const fileInput = document.getElementById("fileInput");
+
+        if (!uploadArea || !fileInput) return;
+
+        uploadArea.addEventListener("click", () => fileInput.click());
+
+        uploadArea.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          uploadArea.style.borderColor = "#4dd4d8";
+          uploadArea.style.background = "#f0feff";
+        });
+
+        uploadArea.addEventListener("dragleave", () => {
+          uploadArea.style.borderColor = "#ddd";
+          uploadArea.style.background = "#fafafa";
+        });
+
+        uploadArea.addEventListener("drop", (e) => {
+          e.preventDefault();
+          uploadArea.style.borderColor = "#ddd";
+          uploadArea.style.background = "#fafafa";
+
+          const files = e.dataTransfer.files;
+          if (files.length > 0) {
+            handleFileSelect(files[0], uploadArea);
+          }
+        });
+
+        fileInput.addEventListener("change", (e) => {
+          if (e.target.files.length > 0) {
+            handleFileSelect(e.target.files[0], uploadArea);
+          }
+        });
+      }
+      window.addEventListener("load", setupUploadArea);
+    </script>
+  </body>
+</html>
