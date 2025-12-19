@@ -105,7 +105,14 @@ function toggleAllSchedules() {
     allSchedules.forEach((schedule) => {
       const scheduleCard = document.createElement("div");
       scheduleCard.className = "all-schedule-card";
-      scheduleCard.onclick = () => openSchedule(schedule.subject);
+      // Disable navigation for schedule cards: prevent redirect when clicked
+      scheduleCard.onclick = (e) => {
+        e.stopPropagation();
+        console.log(
+          "Schedule card clicked (navigation disabled):",
+          schedule.subject
+        );
+      };
 
       scheduleCard.innerHTML = `
         <img src="${schedule.image}" class="all-schedule-image" alt="${schedule.subject}" />
@@ -395,15 +402,38 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Event listener untuk all schedule cards (yang dibuat secara dinamis)
+  // Disable navigation for static schedule cards (initialSchedule) by removing inline onclick
+  const staticScheduleCards = document.querySelectorAll(".schedule-card");
+  staticScheduleCards.forEach((card) => {
+    // remove inline onclick attribute if present
+    if (card.getAttribute("onclick")) card.removeAttribute("onclick");
+    // add a safe click handler that prevents navigation
+    card.addEventListener("click", function (e) {
+      e = e || window.event;
+      if (e.preventDefault) e.preventDefault();
+      if (e.stopPropagation) e.stopPropagation();
+      const titleEl = card.querySelector(".schedule-title");
+      const subject = titleEl ? titleEl.textContent.trim() : "";
+      console.log(
+        "Static schedule card clicked (navigation disabled):",
+        subject
+      );
+      return false;
+    });
+  });
+
+  // Global click handler for .all-schedule-card kept for logging only
   document.addEventListener("click", function (e) {
     if (e.target.closest(".all-schedule-card")) {
       const scheduleCard = e.target.closest(".all-schedule-card");
       const subject = scheduleCard.querySelector(
         ".all-schedule-title"
       ).textContent;
-      console.log("All schedule card clicked, subject:", subject);
-      openSchedule(subject);
+      console.log(
+        "All schedule card clicked (navigation disabled), subject:",
+        subject
+      );
+      // intentionally do not call openSchedule(subject) to prevent navigation
     }
   });
 
