@@ -407,7 +407,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Debug: Cek semua elemen yang bisa diklik
   console.log("=== DEBUG INFO ===");
   console.log(
     "Subject cards:",
