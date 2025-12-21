@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SMPN 3 Purwokerto</title>
     <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/theme.css" />
   </head>
 
   <body>
@@ -26,10 +27,36 @@
         <a href="tugas.html">Tugas</a>
       </nav>
 
-      <div class="user-profile">
+      <div
+        class="user-profile"
+        id="userProfile"
+        tabindex="0"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
         <span class="user-name">Lina Melinda</span>
         <div class="user-avatar">
           <img src="img/Student.png" alt="Lina Melinda" />
+        </div>
+
+        <div
+          class="profile-dropdown"
+          id="profileDropdown"
+          role="menu"
+          aria-hidden="true"
+        >
+          <div class="profile-info">
+            <img src="img/Student.png" alt="avatar" class="dropdown-avatar" />
+            <div class="profile-meta">
+              <div class="profile-name">Lina Melinda</div>
+              <div class="profile-email">lina@example.com</div>
+            </div>
+          </div>
+          <div class="profile-actions">
+            <a href="profile.html" class="dropdown-item">Lihat Profil</a>
+            <a href="settings.html" class="dropdown-item">Pengaturan</a>
+            <a href="login.html" class="dropdown-item logout">Keluar</a>
+          </div>
         </div>
       </div>
     </header>
@@ -596,6 +623,7 @@
       </div>
     </footer>
 
+    <script src="js/theme.js"></script>
     <script src="js/dashboard.js"></script>
   </body>
 </html>

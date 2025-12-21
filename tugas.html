@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tugas & Nilai - SMPN 3 Purwokerto</title>
     <link rel="stylesheet" href="css/tugas.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/theme.css" />
   </head>
   <body>
     <!-- Header -->
@@ -26,10 +28,36 @@
         <a href="tugas.html" class="active">Tugas</a>
       </nav>
 
-      <div class="user-profile">
+      <div
+        class="user-profile"
+        id="userProfile"
+        tabindex="0"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
         <span class="user-name">Lina Melinda</span>
         <div class="user-avatar">
           <img src="img/Student.png" alt="Lina Melinda" />
+        </div>
+
+        <div
+          class="profile-dropdown"
+          id="profileDropdown"
+          role="menu"
+          aria-hidden="true"
+        >
+          <div class="profile-info">
+            <img src="img/Student.png" alt="avatar" class="dropdown-avatar" />
+            <div class="profile-meta">
+              <div class="profile-name">Lina Melinda</div>
+              <div class="profile-email">lina@example.com</div>
+            </div>
+          </div>
+          <div class="profile-actions">
+            <a href="profile.html" class="dropdown-item">Lihat Profil</a>
+            <a href="settings.html" class="dropdown-item">Pengaturan</a>
+            <a href="login.html" class="dropdown-item logout">Keluar</a>
+          </div>
         </div>
       </div>
     </header>
@@ -44,11 +72,20 @@
         <!-- Senin, 14 Mei 2025 -->
         <div class="date-group">
           <h3 class="date-header">Senin, 14 Mei 2025</h3>
-          
+
           <div class="task-card">
             <div class="task-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#667eea"
+                stroke-width="2"
+              >
+                <path
+                  d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                ></path>
                 <polyline points="13 2 13 9 20 9"></polyline>
               </svg>
             </div>
@@ -56,13 +93,24 @@
               <h4 class="task-title">Pengumpulan Tugas Minggu ke-2</h4>
               <p class="task-subject">Matematika - Penugasan Jatuh Tempo</p>
             </div>
-            <button class="task-button" onclick="openTaskDetail('math-week2')">Kirimkan Tugas</button>
+            <button class="task-button" onclick="openTaskDetail('math-week2')">
+              Kirimkan Tugas
+            </button>
           </div>
 
           <div class="task-card">
             <div class="task-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#667eea"
+                stroke-width="2"
+              >
+                <path
+                  d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                ></path>
                 <polyline points="13 2 13 9 20 9"></polyline>
               </svg>
             </div>
@@ -70,13 +118,24 @@
               <h4 class="task-title">Pengumpulan Tugas Minggu ke-2</h4>
               <p class="task-subject">Seni Budaya - Penugasan Jatuh Tempo</p>
             </div>
-            <button class="task-button" onclick="openTaskDetail('seni-week2')">Kirimkan Tugas</button>
+            <button class="task-button" onclick="openTaskDetail('seni-week2')">
+              Kirimkan Tugas
+            </button>
           </div>
 
           <div class="task-card">
             <div class="task-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#667eea"
+                stroke-width="2"
+              >
+                <path
+                  d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                ></path>
                 <polyline points="13 2 13 9 20 9"></polyline>
               </svg>
             </div>
@@ -84,18 +143,29 @@
               <h4 class="task-title">Pengumpulan Tugas Minggu ke-2</h4>
               <p class="task-subject">Bahasa Jawa - Penugasan Jatuh Tempo</p>
             </div>
-            <button class="task-button" onclick="openTaskDetail('jawa-week2')">Kirimkan Tugas</button>
+            <button class="task-button" onclick="openTaskDetail('jawa-week2')">
+              Kirimkan Tugas
+            </button>
           </div>
         </div>
 
         <!-- Senin, 21 Mei 2025 -->
         <div class="date-group">
           <h3 class="date-header">Senin, 21 Mei 2025</h3>
-          
+
           <div class="task-card">
             <div class="task-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#667eea"
+                stroke-width="2"
+              >
+                <path
+                  d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                ></path>
                 <polyline points="13 2 13 9 20 9"></polyline>
               </svg>
             </div>
@@ -103,47 +173,87 @@
               <h4 class="task-title">Pengumpulan Tugas Minggu ke-3</h4>
               <p class="task-subject">Bahasa Inggris - Penugasan Jatuh Tempo</p>
             </div>
-            <button class="task-button" onclick="openTaskDetail('english-week3')">Kirimkan Tugas</button>
+            <button
+              class="task-button"
+              onclick="openTaskDetail('english-week3')"
+            >
+              Kirimkan Tugas
+            </button>
           </div>
 
           <div class="task-card">
             <div class="task-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#667eea"
+                stroke-width="2"
+              >
+                <path
+                  d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                ></path>
                 <polyline points="13 2 13 9 20 9"></polyline>
               </svg>
             </div>
             <div class="task-info">
               <h4 class="task-title">Pengumpulan Tugas Minggu ke-3</h4>
-              <p class="task-subject">Ilmu Pengetahuan Sosial - Penugasan Jatuh Tempo</p>
+              <p class="task-subject">
+                Ilmu Pengetahuan Sosial - Penugasan Jatuh Tempo
+              </p>
             </div>
-            <button class="task-button" onclick="openTaskDetail('ips-week3')">Kirimkan Tugas</button>
+            <button class="task-button" onclick="openTaskDetail('ips-week3')">
+              Kirimkan Tugas
+            </button>
           </div>
 
           <div class="task-card">
             <div class="task-icon">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#667eea"
+                stroke-width="2"
+              >
+                <path
+                  d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                ></path>
                 <polyline points="13 2 13 9 20 9"></polyline>
               </svg>
             </div>
             <div class="task-info">
               <h4 class="task-title">Pengumpulan Tugas Minggu ke-3</h4>
-              <p class="task-subject">Bahasa Indonesia - Penugasan Jatuh Tempo</p>
+              <p class="task-subject">
+                Bahasa Indonesia - Penugasan Jatuh Tempo
+              </p>
             </div>
-            <button class="task-button" onclick="openTaskDetail('indo-week3')">Kirimkan Tugas</button>
+            <button class="task-button" onclick="openTaskDetail('indo-week3')">
+              Kirimkan Tugas
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Grades Section -->
-      <h2 class="section-title" style="margin-top: 50px;">Nilai Anda</h2>
+      <h2 class="section-title" style="margin-top: 50px">Nilai Anda</h2>
       <div class="grades-section">
         <!-- Grade Item 1 -->
         <div class="grade-card">
           <div class="grade-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2">
-              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ff9500"
+              stroke-width="2"
+            >
+              <path
+                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+              ></path>
               <polyline points="13 2 13 9 20 9"></polyline>
             </svg>
           </div>
@@ -157,8 +267,17 @@
         <!-- Grade Item 2 -->
         <div class="grade-card">
           <div class="grade-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2">
-              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ff9500"
+              stroke-width="2"
+            >
+              <path
+                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+              ></path>
               <polyline points="13 2 13 9 20 9"></polyline>
             </svg>
           </div>
@@ -172,8 +291,17 @@
         <!-- Grade Item 3 -->
         <div class="grade-card">
           <div class="grade-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2">
-              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ff9500"
+              stroke-width="2"
+            >
+              <path
+                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+              ></path>
               <polyline points="13 2 13 9 20 9"></polyline>
             </svg>
           </div>
@@ -187,8 +315,17 @@
         <!-- Grade Item 4 -->
         <div class="grade-card">
           <div class="grade-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2">
-              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ff9500"
+              stroke-width="2"
+            >
+              <path
+                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+              ></path>
               <polyline points="13 2 13 9 20 9"></polyline>
             </svg>
           </div>
@@ -202,14 +339,25 @@
         <!-- Grade Item 5 -->
         <div class="grade-card">
           <div class="grade-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2">
-              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ff9500"
+              stroke-width="2"
+            >
+              <path
+                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+              ></path>
               <polyline points="13 2 13 9 20 9"></polyline>
             </svg>
           </div>
           <div class="grade-info">
             <h4 class="grade-title">Tugas Minggu ke-2</h4>
-            <p class="grade-subject">Ilmu Pengetahuan Sosial - Penugasan Jatuh Tempo</p>
+            <p class="grade-subject">
+              Ilmu Pengetahuan Sosial - Penugasan Jatuh Tempo
+            </p>
           </div>
           <div class="grade-value">-</div>
         </div>
@@ -217,14 +365,25 @@
         <!-- Grade Item 6 -->
         <div class="grade-card">
           <div class="grade-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2">
-              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ff9500"
+              stroke-width="2"
+            >
+              <path
+                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+              ></path>
               <polyline points="13 2 13 9 20 9"></polyline>
             </svg>
           </div>
           <div class="grade-info">
             <h4 class="grade-title">Tugas Minggu ke-3</h4>
-            <p class="grade-subject">Bahasa Indonesia - Penugasan Jatuh Tempo</p>
+            <p class="grade-subject">
+              Bahasa Indonesia - Penugasan Jatuh Tempo
+            </p>
           </div>
           <div class="grade-value">88</div>
         </div>
@@ -232,8 +391,17 @@
         <!-- Grade Item 7 -->
         <div class="grade-card">
           <div class="grade-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ff9500" stroke-width="2">
-              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ff9500"
+              stroke-width="2"
+            >
+              <path
+                d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+              ></path>
               <polyline points="13 2 13 9 20 9"></polyline>
             </svg>
           </div>
@@ -337,29 +505,50 @@
           <form id="taskSubmissionForm" onsubmit="handleTaskSubmission(event)">
             <div class="form-group">
               <label for="taskTitle">Nama Tugas:</label>
-              <input type="text" id="taskTitle" name="taskTitle" placeholder="Masukkan nama tugas" required>
+              <input
+                type="text"
+                id="taskTitle"
+                name="taskTitle"
+                placeholder="Masukkan nama tugas"
+                required
+              />
             </div>
             <div class="form-group">
               <label for="taskFile">Pilih File Tugas:</label>
               <div class="file-input-wrapper">
-                <input type="file" id="taskFile" name="taskFile" accept=".pdf,.doc,.docx,.ppt,.pptx,.xlsx,.xls,.jpg,.png,.txt" required>
+                <input
+                  type="file"
+                  id="taskFile"
+                  name="taskFile"
+                  accept=".pdf,.doc,.docx,.ppt,.pptx,.xlsx,.xls,.jpg,.png,.txt"
+                  required
+                />
                 <span class="file-input-label">Pilih File</span>
                 <span class="file-input-name">Belum ada file dipilih</span>
               </div>
             </div>
             <div class="form-group">
               <label for="taskNotes">Catatan (opsional):</label>
-              <textarea id="taskNotes" name="taskNotes" placeholder="Tambahkan catatan atau komentar tentang tugas..." rows="4"></textarea>
+              <textarea
+                id="taskNotes"
+                name="taskNotes"
+                placeholder="Tambahkan catatan atau komentar tentang tugas..."
+                rows="4"
+              ></textarea>
             </div>
             <div class="modal-actions">
               <button type="submit" class="btn-submit">Kirimkan</button>
-              <button type="button" class="btn-cancel" onclick="closeModal()">Batal</button>
+              <button type="button" class="btn-cancel" onclick="closeModal()">
+                Batal
+              </button>
             </div>
           </form>
         </div>
       </div>
     </div>
 
+    <script src="js/theme.js"></script>
+    <script src="js/profile-dropdown.js"></script>
     <script src="js/tugas.js"></script>
   </body>
 </html>

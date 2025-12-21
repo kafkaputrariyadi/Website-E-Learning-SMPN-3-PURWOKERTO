@@ -1,149 +1,157 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Learning SMPN 3 Purwokerto - Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/home_guru.css">
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <div class="header-left">
-        <h1>E-Learning SMPN 3 Purwokerto</h1>
-        <p>Portal Guru</p>
-      </div>
-      <div class="header-right">
-        <div class="greeting">
-          <p>Selamat Datang,</p>
-          <p>Bu Sari Indah, S.Pd</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Learning SMPN 3 Purwokerto - Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/home_guru.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-left">
+          <h1>E-Learning SMPN 3 Purwokerto</h1>
+          <p>Portal Guru</p>
         </div>
-        <div class="avatar">SI</div>
+        <div class="header-right">
+          <div class="greeting">
+            <p>Selamat Datang,</p>
+            <p>Bu Sari Indah, S.Pd</p>
+          </div>
+          <div class="avatar">SI</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="home_guru.html" class="nav-btn active">Dashboard</a>
+        <a href="upload_tugas.html" class="nav-btn">Upload Tugas</a>
+        <script src="js/theme.js"></script>
+        <script src="js/home_guru.js"></script>
+        <a href="monitor_siswa.html" class="nav-btn">Monitor Siswa</a>
+        <a href="penilaian.html" class="nav-btn">Penilaian</a>
+      </div>
+
+      <div id="contentArea">
+        <div class="announcement">
+          <span
+            ><strong>Pengumuman:</strong> 5 Tugas baru telah dikumpulkan oleh
+            siswa dan menunggu penilaian anda!</span
+          >
+        </div>
+
+        <div class="cards-container">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon">📊</div>
+              <div class="card-title">
+                <h3>Ringkasan Hari Ini</h3>
+                <p>Statistik Pembelajaran</p>
+              </div>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-value">30</div>
+                <div class="stat-label">Siswa Aktif</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Tugas Baru</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Perlu Dinilai</div>
+              </div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 40%"></div>
+            </div>
+            <div class="progress-text">40% Target Harian Tercapai</div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon">📈</div>
+              <div class="card-title">
+                <h3>Progres Kelas</h3>
+                <p>Bahasa Inggris Kelas 7B</p>
+              </div>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-value">90%</div>
+                <div class="stat-label">Kehadiran</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">88%</div>
+                <div class="stat-label">Tugas Selesai</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">8.5</div>
+                <div class="stat-label">Rata-rata Nilai</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-icon">⏰</div>
+              <div class="card-title">
+                <h3>Tugas Mendatang</h3>
+                <p>Deadline Terdekat</p>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-info">
+                <p>PR Daily Activities</p>
+                <p>Kelas 7A - Bahasa Inggris</p>
+              </div>
+              <div class="task-time">3 hari lagi</div>
+            </div>
+            <div class="task-item">
+              <div class="task-info">
+                <p>PR Daily Activities</p>
+                <p>Kelas 7C - Bahasa Inggris</p>
+              </div>
+              <div class="task-time">5 hari lagi</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="nav-buttons">
-      <a href="home_guru.html" class="nav-btn active">Dashboard</a>
-      <a href="upload_tugas.html" class="nav-btn">Upload Tugas</a>
-      <a href="upload_materi.html" class="nav-btn">Upload Materi</a>
-      <a href="monitor_siswa.html" class="nav-btn">Monitor Siswa</a>
-      <a href="penilaian.html" class="nav-btn">Penilaian</a>
-    </div>
+    <script>
+      function animateProgressBar() {
+        setTimeout(() => {
+          const progressFill = document.querySelector(".progress-fill");
+          if (progressFill) {
+            progressFill.style.width = "0%";
+            setTimeout(() => {
+              progressFill.style.width = "40%";
+            }, 100);
+          }
+        }, 100);
+      }
 
-    <div id="contentArea">
-      <div class="announcement">
-        <span><strong>Pengumuman:</strong> 5 Tugas baru telah dikumpulkan oleh siswa dan menunggu penilaian anda!</span>
-      </div>
+      window.addEventListener("load", animateProgressBar);
 
-      <div class="cards-container">
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon">📊</div>
-            <div class="card-title">
-              <h3>Ringkasan Hari Ini</h3>
-              <p>Statistik Pembelajaran</p>
-            </div>
-          </div>
-          <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-value">30</div>
-              <div class="stat-label">Siswa Aktif</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value">5</div>
-              <div class="stat-label">Tugas Baru</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value">12</div>
-              <div class="stat-label">Perlu Dinilai</div>
-            </div>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: 40%"></div>
-          </div>
-          <div class="progress-text">40% Target Harian Tercapai</div>
-        </div>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-5px)";
+            this.style.transition = "transform 0.3s ease";
+          });
 
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon">📈</div>
-            <div class="card-title">
-              <h3>Progres Kelas</h3>
-              <p>Bahasa Inggris Kelas 7B</p>
-            </div>
-          </div>
-          <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-value">90%</div>
-              <div class="stat-label">Kehadiran</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value">88%</div>
-              <div class="stat-label">Tugas Selesai</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value">8.5</div>
-              <div class="stat-label">Rata-rata Nilai</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon">⏰</div>
-            <div class="card-title">
-              <h3>Tugas Mendatang</h3>
-              <p>Deadline Terdekat</p>
-            </div>
-          </div>
-          <div class="task-item">
-            <div class="task-info">
-              <p>PR Daily Activities</p>
-              <p>Kelas 7A - Bahasa Inggris</p>
-            </div>
-            <div class="task-time">3 hari lagi</div>
-          </div>
-          <div class="task-item">
-            <div class="task-info">
-              <p>PR Daily Activities</p>
-              <p>Kelas 7C - Bahasa Inggris</p>
-            </div>
-            <div class="task-time">5 hari lagi</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function animateProgressBar() {
-      setTimeout(() => {
-        const progressFill = document.querySelector('.progress-fill');
-        if (progressFill) {
-          progressFill.style.width = '0%';
-          setTimeout(() => {
-            progressFill.style.width = '40%';
-          }, 100);
-        }
-      }, 100);
-    }
-
-    window.addEventListener('load', animateProgressBar);
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-5px)';
-          this.style.transition = 'transform 0.3s ease';
-        });
-
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0)';
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+          });
         });
       });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

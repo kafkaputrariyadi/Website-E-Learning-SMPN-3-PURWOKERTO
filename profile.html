@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil - SMPN 3 Purwokerto</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <style>
+      body {
+        font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+        background: linear-gradient(180deg, #f4fbff 0%, #f8f9fa 100%);
+        color: #102a43;
+      }
+      .profile-wrapper {
+        max-width: 860px;
+        margin: 48px auto;
+        padding: 0 16px;
+      }
+      .profile-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 28px;
+        display: flex;
+        gap: 28px;
+        align-items: center;
+        box-shadow: 0 12px 30px rgba(12, 30, 60, 0.06);
+      }
+      .profile-left {
+        width: 260px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .profile-avatar-large {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 6px solid #e9f7f3;
+      }
+      .profile-name-large {
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 14px;
+      }
+      .profile-role {
+        font-size: 13px;
+        color: #486581;
+        margin-top: 6px;
+      }
+      .profile-actions-row {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+      }
+      .profile-right {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        align-items: center;
+      }
+      .detail-row {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .detail-row .label {
+        width: 110px;
+        color: #334e68;
+        font-weight: 700;
+      }
+      .detail-row .value {
+        color: #1f4960;
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, #2fbf8f, #1aa47a);
+        color: #fff;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: none;
+      }
+      .btn-outline {
+        background: transparent;
+        border: 1px solid #e1eef6;
+        padding: 10px 14px;
+        border-radius: 8px;
+        color: #1f6f8b;
+        text-decoration: none;
+      }
+
+      @media (max-width: 900px) {
+        .profile-card {
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+        }
+        .profile-left {
+          width: 100%;
+        }
+        .profile-right {
+          grid-template-columns: 1fr;
+          width: 100%;
+        }
+        .profile-avatar-large {
+          width: 96px;
+          height: 96px;
+        }
+        .profile-name-large {
+          font-size: 18px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .profile-wrapper {
+          margin: 16px;
+        }
+        .profile-avatar-large {
+          width: 80px;
+          height: 80px;
+        }
+        .profile-actions-row {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="img/Logo.png"
+          alt="Ikon Sekolah"
+          width="30"
+          height="30"
+          style="object-fit: contain"
+        />
+        <span>SMPN 3 Purwokerto</span>
+      </div>
+      <nav>
+        <a href="dashboard.html">Course</a>
+        <a href="nilai.html">Nilai</a>
+        <a href="tugas.html">Tugas</a>
+      </nav>
+      <div></div>
+    </header>
+
+    <main class="profile-wrapper">
+      <div class="profile-card">
+        <div class="profile-left">
+          <img
+            src="img/Student.png"
+            alt="avatar"
+            class="profile-avatar-large"
+          />
+          <div class="profile-name-large">Kafka Putra Riyadi</div>
+          <div class="profile-role">Siswa / Kelas 9</div>
+          <div class="profile-actions-row">
+            <button id="editProfileBtn" class="btn-primary">Edit Profil</button>
+            <a href="settings.html" class="btn-outline">Pengaturan</a>
+          </div>
+        </div>
+
+        <div class="profile-right">
+          <div class="detail-row">
+            <div class="label">NIS:</div>
+            <div class="value" id="profileNIS">12345678</div>
+          </div>
+          <div class="detail-row">
+            <div class="label">Email:</div>
+            <div class="value" id="profileEmail">Kafka@example.com</div>
+          </div>
+          <div class="detail-row">
+            <div class="label">Telepon:</div>
+            <div class="value" id="profilePhone">0812-3456-7890</div>
+          </div>
+          <div class="detail-row">
+            <div class="label">Alamat:</div>
+            <div class="value" id="profileAddress">
+              Jl. Flamboyan, Sumampir, Purwokerto
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Edit profile modal -->
+    <div
+      id="profileModal"
+      class="modal"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div
+        class="modal-backdrop"
+        style="position: absolute; inset: 0; background: rgba(7, 15, 30, 0.45)"
+      ></div>
+      <div
+        class="modal-card"
+        style="
+          position: relative;
+          background: white;
+          border-radius: 12px;
+          padding: 18px;
+          max-width: 640px;
+          width: 92%;
+          box-shadow: 0 12px 36px rgba(12, 30, 60, 0.12);
+          z-index: 81;
+        "
+      >
+        <h3 style="margin-top: 0; color: #102a43">Edit Profil</h3>
+        <form id="profileForm">
+          <div
+            style="
+              display: flex;
+              gap: 12px;
+              align-items: center;
+              margin-bottom: 12px;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+              "
+            >
+              <img
+                id="editAvatarPreview"
+                src="img/Student.png"
+                style="
+                  width: 92px;
+                  height: 92px;
+                  border-radius: 50%;
+                  object-fit: cover;
+                  border: 4px solid #eef7f4;
+                "
+                alt="avatar preview"
+              />
+              <input type="file" id="avatarInput" accept="image/*" />
+            </div>
+            <div style="flex: 1">
+              <label style="display: block; font-weight: 600; color: #334e68"
+                >Nama</label
+              >
+              <input
+                id="inputName"
+                type="text"
+                style="
+                  width: 100%;
+                  padding: 8px;
+                  border-radius: 8px;
+                  border: 1px solid #e6eef4;
+                  margin-bottom: 8px;
+                "
+              />
+              <label style="display: block; font-weight: 600; color: #334e68"
+                >Email</label
+              >
+              <input
+                id="inputEmail"
+                type="email"
+                style="
+                  width: 100%;
+                  padding: 8px;
+                  border-radius: 8px;
+                  border: 1px solid #e6eef4;
+                  margin-bottom: 8px;
+                "
+              />
+              <label style="display: block; font-weight: 600; color: #334e68"
+                >Telepon</label
+              >
+              <input
+                id="inputPhone"
+                type="text"
+                style="
+                  width: 100%;
+                  padding: 8px;
+                  border-radius: 8px;
+                  border: 1px solid #e6eef4;
+                  margin-bottom: 8px;
+                "
+              />
+            </div>
+          </div>
+          <div style="margin-bottom: 12px">
+            <label style="display: block; font-weight: 600; color: #334e68"
+              >Alamat</label
+            >
+            <textarea
+              id="inputAddress"
+              style="
+                width: 100%;
+                padding: 8px;
+                border-radius: 8px;
+                border: 1px solid #e6eef4;
+              "
+              rows="3"
+            ></textarea>
+          </div>
+          <div
+            style="
+              display: flex;
+              justify-content: flex-end;
+              gap: 10px;
+              margin-top: 8px;
+            "
+          >
+            <button type="button" id="cancelEdit" class="btn-outline">
+              Batal
+            </button>
+            <button type="submit" class="btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- footer removed for profile page per request -->
+
+    <script src="js/theme.js"></script>
+    <script>
+      (function () {
+        // load profile from localStorage or defaults
+        const defaults = {
+          name: "Lina Melinda",
+          nis: "12345678",
+          email: "lina@example.com",
+          phone: "0812-3456-7890",
+          address: "Jl. Gereja No.20, Purwokerto",
+          avatar: "img/Student.png",
+        };
+
+        function getProfile() {
+          try {
+            const raw = localStorage.getItem("profileData");
+            if (raw) return JSON.parse(raw);
+          } catch (e) {
+            console.warn(e);
+          }
+          return defaults;
+        }
+
+        function saveProfile(profile) {
+          localStorage.setItem("profileData", JSON.stringify(profile));
+        }
+
+        function applyProfileToPage(profile) {
+          const nameEl = document.querySelector(".profile-name-large");
+          if (nameEl) nameEl.textContent = profile.name || defaults.name;
+          const nisEl = document.getElementById("profileNIS");
+          if (nisEl) nisEl.textContent = profile.nis || defaults.nis;
+          const emailEl = document.getElementById("profileEmail");
+          if (emailEl) emailEl.textContent = profile.email || defaults.email;
+          const phoneEl = document.getElementById("profilePhone");
+          if (phoneEl) phoneEl.textContent = profile.phone || defaults.phone;
+          const addrEl = document.getElementById("profileAddress");
+          if (addrEl) addrEl.textContent = profile.address || defaults.address;
+          const avatarEl = document.querySelector(".profile-avatar-large");
+          if (avatarEl) avatarEl.src = profile.avatar || defaults.avatar;
+
+          // also update dashboard header name/avatar for site-wide consistency
+          try {
+            if (window.parent !== window) return; // avoid if inside iframe
+            localStorage.setItem("profileData", JSON.stringify(profile));
+          } catch (e) {}
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const profile = getProfile();
+          applyProfileToPage(profile);
+
+          const modal = document.getElementById("profileModal");
+          const editBtn = document.getElementById("editProfileBtn");
+          const cancelBtn = document.getElementById("cancelEdit");
+          const form = document.getElementById("profileForm");
+          const inputName = document.getElementById("inputName");
+          const inputEmail = document.getElementById("inputEmail");
+          const inputPhone = document.getElementById("inputPhone");
+          const inputAddress = document.getElementById("inputAddress");
+          const avatarInput = document.getElementById("avatarInput");
+          const avatarPreview = document.getElementById("editAvatarPreview");
+
+          function openModal() {
+            const p = getProfile();
+            inputName.value = p.name || "";
+            inputEmail.value = p.email || "";
+            inputPhone.value = p.phone || "";
+            inputAddress.value = p.address || "";
+            avatarPreview.src = p.avatar || defaults.avatar;
+            modal.style.display = "flex";
+          }
+
+          function closeModal() {
+            modal.style.display = "none";
+          }
+
+          editBtn.addEventListener("click", function () {
+            openModal();
+          });
+          cancelBtn.addEventListener("click", function () {
+            closeModal();
+          });
+          modal
+            .querySelector(".modal-backdrop")
+            .addEventListener("click", closeModal);
+
+          avatarInput.addEventListener("change", function () {
+            const file = avatarInput.files && avatarInput.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              avatarPreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          });
+
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const updated = {
+              name: inputName.value || defaults.name,
+              nis:
+                document.getElementById("profileNIS").textContent ||
+                defaults.nis,
+              email: inputEmail.value || defaults.email,
+              phone: inputPhone.value || defaults.phone,
+              address: inputAddress.value || defaults.address,
+              avatar: avatarPreview.src || defaults.avatar,
+            };
+            saveProfile(updated);
+            applyProfileToPage(updated);
+            closeModal();
+            alert("Profil diperbarui.");
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

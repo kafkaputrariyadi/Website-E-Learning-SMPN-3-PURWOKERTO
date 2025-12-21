@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nilai - SMPN 3 Purwokerto</title>
     <link rel="stylesheet" href="css/nilai.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/theme.css" />
   </head>
   <body>
     <!-- Header -->
@@ -26,10 +28,36 @@
         <a href="tugas.html">Tugas</a>
       </nav>
 
-      <div class="user-profile">
+      <div
+        class="user-profile"
+        id="userProfile"
+        tabindex="0"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
         <span class="user-name">Lina Melinda</span>
         <div class="user-avatar">
           <img src="img/Student.png" alt="Lina Melinda" />
+        </div>
+
+        <div
+          class="profile-dropdown"
+          id="profileDropdown"
+          role="menu"
+          aria-hidden="true"
+        >
+          <div class="profile-info">
+            <img src="img/Student.png" alt="avatar" class="dropdown-avatar" />
+            <div class="profile-meta">
+              <div class="profile-name">Lina Melinda</div>
+              <div class="profile-email">lina@example.com</div>
+            </div>
+          </div>
+          <div class="profile-actions">
+            <a href="profile.html" class="dropdown-item">Lihat Profil</a>
+            <a href="settings.html" class="dropdown-item">Pengaturan</a>
+            <a href="login.html" class="dropdown-item logout">Keluar</a>
+          </div>
         </div>
       </div>
     </header>
@@ -39,11 +67,21 @@
       <!-- Hero Section dengan Statistik -->
       <div class="stats-section">
         <h2 class="section-title">Ringkasan Nilai Anda</h2>
-        
+
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-icon" style="background: linear-gradient(135deg, #000000 100%);">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <div
+              class="stat-icon"
+              style="background: linear-gradient(135deg, #000000 100%)"
+            >
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
                 <path d="M12 20v-6m0 0V4m0 10l6-6m-6 6l-6-6"></path>
               </svg>
             </div>
@@ -54,8 +92,18 @@
           </div>
 
           <div class="stat-card">
-            <div class="stat-icon" style="background: linear-gradient(135deg, #000000 100%);">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <div
+              class="stat-icon"
+              style="background: linear-gradient(135deg, #000000 100%)"
+            >
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
                 <path d="M12 2v20m10-10H2"></path>
               </svg>
             </div>
@@ -66,8 +114,18 @@
           </div>
 
           <div class="stat-card">
-            <div class="stat-icon" style="background: linear-gradient(135deg ,#000000 100%);">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <div
+              class="stat-icon"
+              style="background: linear-gradient(135deg, #000000 100%)"
+            >
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
                 <path d="M3 12h18M3 6h18M3 18h18"></path>
               </svg>
             </div>
@@ -78,8 +136,18 @@
           </div>
 
           <div class="stat-card">
-            <div class="stat-icon" style="background: linear-gradient(135deg, #000000 100%);">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <div
+              class="stat-icon"
+              style="background: linear-gradient(135deg, #000000 100%)"
+            >
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+              >
                 <circle cx="12" cy="12" r="10"></circle>
                 <path d="M12 6v6l4 2"></path>
               </svg>
@@ -111,19 +179,28 @@
 
       <!-- Grades by Subject Section -->
       <h2 class="section-title">Nilai Per Mata Pelajaran</h2>
-      
+
       <!-- Matematika -->
       <div class="subject-section" data-subject="matematika">
         <div class="subject-header">
           <h3 class="subject-title">Matematika</h3>
         </div>
-        
+
         <div class="grades-container">
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -141,8 +218,17 @@
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -160,8 +246,17 @@
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -183,13 +278,22 @@
         <div class="subject-header">
           <h3 class="subject-title">Ilmu Pengetahuan Alam</h3>
         </div>
-        
+
         <div class="grades-container">
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -207,8 +311,17 @@
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -230,13 +343,22 @@
         <div class="subject-header">
           <h3 class="subject-title">Bahasa Inggris</h3>
         </div>
-        
+
         <div class="grades-container">
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -254,8 +376,17 @@
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -277,13 +408,22 @@
         <div class="subject-header">
           <h3 class="subject-title">Bahasa Indonesia</h3>
         </div>
-        
+
         <div class="grades-container">
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -301,8 +441,17 @@
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -324,13 +473,22 @@
         <div class="subject-header">
           <h3 class="subject-title">Ilmu Pengetahuan Sosial</h3>
         </div>
-        
+
         <div class="grades-container">
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -352,13 +510,22 @@
         <div class="subject-header">
           <h3 class="subject-title">Seni Budaya</h3>
         </div>
-        
+
         <div class="grades-container">
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -380,13 +547,22 @@
         <div class="subject-header">
           <h3 class="subject-title">Bahasa Jawa</h3>
         </div>
-        
+
         <div class="grades-container">
           <div class="grade-item">
             <div class="grade-left">
               <div class="grade-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2">
-                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#667eea"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"
+                  ></path>
                   <polyline points="13 2 13 9 20 9"></polyline>
                 </svg>
               </div>
@@ -484,6 +660,8 @@
       </div>
     </footer>
 
+    <script src="js/theme.js"></script>
+    <script src="js/profile-dropdown.js"></script>
     <script src="js/nilai.js"></script>
   </body>
 </html>

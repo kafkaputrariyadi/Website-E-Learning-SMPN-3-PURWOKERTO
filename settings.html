@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengaturan - SMPN 3 Purwokerto</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    <style>
+      body {
+        background: #f6fbff;
+      }
+      .settings-container {
+        max-width: 900px;
+        margin: 48px auto;
+      }
+      .settings-card {
+        background: white;
+        padding: 26px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(24, 39, 75, 0.05);
+      }
+      .settings-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #f1f6fb;
+      }
+      .settings-row:last-child {
+        border-bottom: none;
+      }
+      .settings-label {
+        font-weight: 600;
+        color: #18324a;
+      }
+      .toggle {
+        width: 44px;
+        height: 26px;
+        background: #e9f0f6;
+        border-radius: 999px;
+        position: relative;
+        cursor: pointer;
+      }
+      .toggle .knob {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        transition: all 0.18s;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      .toggle.on {
+        background: linear-gradient(90deg, #2fbf8f, #1aa47a);
+      }
+      .toggle.on .knob {
+        left: 21px;
+      }
+      .save-row {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, #2fbf8f, #1aa47a);
+        color: #fff;
+        padding: 10px 14px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .btn-outline {
+        background: transparent;
+        border: 1px solid #e5f0f4;
+        padding: 10px 14px;
+        border-radius: 8px;
+        color: #1f6f8b;
+        text-decoration: none;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          src="img/Logo.png"
+          alt="Ikon Sekolah"
+          width="30"
+          height="30"
+          style="object-fit: contain"
+        />
+        <span>SMPN 3 Purwokerto</span>
+      </div>
+      <nav>
+        <a href="dashboard.html">Course</a>
+        <a href="nilai.html">Nilai</a>
+        <a href="tugas.html">Tugas</a>
+      </nav>
+      <div></div>
+    </header>
+
+    <main class="settings-container">
+      <div class="settings-card">
+        <h2 style="margin-top: 0; color: #102a43">Pengaturan Akun</h2>
+        <p style="color: #486581; margin-top: 6px">
+          Atur preferensi akun Anda untuk notifikasi, privasi, dan tampilan.
+        </p>
+
+        <div style="margin-top: 18px">
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Notifikasi Email</div>
+              <div style="color: #486581; font-size: 13px">
+                Terima pemberitahuan melalui email
+              </div>
+            </div>
+            <div
+              class="toggle"
+              id="toggleEmail"
+              role="switch"
+              aria-checked="true"
+            >
+              <div class="knob"></div>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Notifikasi Aplikasi</div>
+              <div style="color: #486581; font-size: 13px">
+                Push dan notifikasi di aplikasi
+              </div>
+            </div>
+            <div
+              class="toggle on"
+              id="togglePush"
+              role="switch"
+              aria-checked="true"
+            >
+              <div class="knob"></div>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Privasi Akun</div>
+              <div style="color: #486581; font-size: 13px">
+                Profil dapat dilihat oleh guru dan teman
+              </div>
+            </div>
+            <div
+              class="toggle"
+              id="togglePrivacy"
+              role="switch"
+              aria-checked="false"
+            >
+              <div class="knob"></div>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-label">Tema Gelap</div>
+              <div style="color: #486581; font-size: 13px">
+                Ubah tampilan aplikasi ke tema gelap
+              </div>
+            </div>
+            <div
+              class="toggle"
+              id="toggleTheme"
+              role="switch"
+              aria-checked="false"
+            >
+              <div class="knob"></div>
+            </div>
+          </div>
+
+          <div class="save-row">
+            <a href="dashboard.html" class="btn-outline">Batal</a>
+            <a href="#" id="saveSettings" class="btn-primary">Simpan</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer intentionally removed for settings page per request -->
+
+    <script src="js/theme.js"></script>
+    <script>
+      // Toggle behavior + theme wiring
+      document.addEventListener("DOMContentLoaded", function () {
+        // initialize toggles
+        document.querySelectorAll(".toggle").forEach(function (el) {
+          el.addEventListener("click", function () {
+            el.classList.toggle("on");
+            const state = el.classList.contains("on");
+            el.setAttribute("aria-checked", state);
+            // if this is theme toggle, apply theme globally
+            if (el.id === "toggleTheme") {
+              if (state) window.setTheme("dark");
+              else window.setTheme("light");
+            }
+          });
+        });
+
+        // set initial state for theme toggle
+        try {
+          const current = window.getTheme();
+          const t = document.getElementById("toggleTheme");
+          if (t) {
+            if (current === "dark") t.classList.add("on");
+            else t.classList.remove("on");
+            t.setAttribute("aria-checked", current === "dark");
+          }
+        } catch (e) {}
+
+        document
+          .getElementById("saveSettings")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            alert("Pengaturan disimpan.");
+            window.location.href = "dashboard.html";
+          });
+      });
+    </script>
+  </body>
+</html>

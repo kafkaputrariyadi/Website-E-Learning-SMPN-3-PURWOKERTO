@@ -1,4 +1,3 @@
-// Data jadwal lengkap
 const allSchedules = [
   {
     subject: "Matematika",
@@ -351,6 +350,19 @@ function openSchedule(subject) {
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM loaded"); // Debug log
 
+  try {
+    const raw = localStorage.getItem("profileData");
+    if (raw) {
+      const pdata = JSON.parse(raw);
+      const nameEl = document.querySelector(".user-name");
+      if (nameEl && pdata.name) nameEl.textContent = pdata.name;
+      const avatarImg = document.querySelector(".user-avatar img");
+      if (avatarImg && pdata.avatar) avatarImg.src = pdata.avatar;
+    }
+  } catch (e) {
+    console.warn("Profile sync failed", e);
+  }
+
   // Smooth scroll untuk anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
@@ -436,6 +448,49 @@ document.addEventListener("DOMContentLoaded", function () {
       // intentionally do not call openSchedule(subject) to prevent navigation
     }
   });
+
+  // Profile dropdown toggle + outside click close + Escape key
+  const userProfile = document.getElementById("userProfile");
+  const profileDropdown = document.getElementById("profileDropdown");
+  if (userProfile && profileDropdown) {
+    userProfile.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const isOpen = profileDropdown.classList.toggle("show");
+      userProfile.setAttribute("aria-expanded", isOpen);
+      profileDropdown.setAttribute("aria-hidden", !isOpen);
+    });
+
+    // Close when clicking outside
+    document.addEventListener("click", function (e) {
+      if (
+        !e.target.closest("#userProfile") &&
+        profileDropdown.classList.contains("show")
+      ) {
+        profileDropdown.classList.remove("show");
+        userProfile.setAttribute("aria-expanded", "false");
+        profileDropdown.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && profileDropdown.classList.contains("show")) {
+        profileDropdown.classList.remove("show");
+        userProfile.setAttribute("aria-expanded", "false");
+        profileDropdown.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    // Close when user clicks an item (if it's a link)
+    profileDropdown.addEventListener("click", function (e) {
+      const a = e.target.closest("a");
+      if (a) {
+        profileDropdown.classList.remove("show");
+        userProfile.setAttribute("aria-expanded", "false");
+        profileDropdown.setAttribute("aria-hidden", "true");
+      }
+    });
+  }
 
   console.log("=== DEBUG INFO ===");
   console.log(

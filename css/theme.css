@@ -1,0 +1,73 @@
+/* Global dark theme overrides applied when .theme-dark is on <html> */
+:root.theme-dark,
+.theme-dark {
+  --bg: #071026;
+  --card: #0b1220;
+  --muted: #9fb7d8;
+  --text: #dbeafe;
+  --accent: #7bd7c4;
+}
+
+.theme-dark body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+.theme-dark header {
+  background: #071727 !important;
+  color: var(--text) !important;
+}
+
+.theme-dark .logo span,
+.theme-dark nav a,
+.theme-dark .user-name {
+  color: var(--text) !important;
+}
+
+.theme-dark .profile-card,
+.theme-dark .settings-panel,
+.theme-dark .settings-card,
+.theme-dark .progress-card,
+.theme-dark .subject-card,
+.theme-dark .schedule-card,
+.theme-dark .all-schedule-card,
+.theme-dark .stat-card {
+  background: var(--card) !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.03) !important;
+}
+
+.theme-dark .footer-content {
+  background: rgba(3, 7, 18, 0.6) !important;
+  color: var(--muted) !important;
+}
+
+.theme-dark a {
+  color: var(--accent) !important;
+}
+.theme-dark .btn-primary {
+  background: linear-gradient(90deg, #0ea5a4, #0b948f) !important;
+}
+.theme-dark .btn-outline {
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  color: var(--text) !important;
+}
+
+.theme-dark .user-avatar {
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* small adjustments */
+.theme-dark .section-title {
+  color: var(--text) !important;
+}
+.theme-dark .card-title,
+.theme-dark .subject-name {
+  color: var(--text) !important;
+}
+.theme-dark .detail-value,
+.theme-dark .teacher-name,
+.theme-dark .profile-meta .profile-email {
+  color: var(--muted) !important;
+}
